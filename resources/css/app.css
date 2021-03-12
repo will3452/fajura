@@ -15,4 +15,7 @@
     .btn-blue {
         @apply text-white bg-blue-500;
     }
+    .active{
+        @apply border-blue-500 border-0 border-b-2;
+    }
 }

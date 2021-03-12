@@ -20,10 +20,13 @@
                 <img x-show="menuShow" src="/img/icons/cancel.svg" alt="">
             </button>
             <ul class="w-1/2 justify-end hidden sm:flex">
-                <li class="py-4 px-4 hover:bg-gray-100">
+                <li class="py-4 px-4 hover:bg-gray-100 @if(route('home') == url()->current()) active @endif" >
                     <a href="/home">Home</a>
                 </li>
-                <li class="py-4 px-4 hover:bg-gray-100">
+                <li class="py-4 px-4 hover:bg-gray-100 @if(route('services.index') == url()->current()) active @endif" >
+                    <a href="{{route('services.index')}}">Services</a>
+                </li>
+                <li class="py-4 px-4 hover:bg-gray-100 ">
                     <a href="#">About</a>
                 </li>
                 <li class="py-4 px-4 hover:bg-gray-100">

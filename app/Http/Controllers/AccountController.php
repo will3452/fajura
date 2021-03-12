@@ -15,7 +15,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = User::get();
+        $accounts = User::where('id','!=',auth()->user()->id)->get();
         return view('accounts.index', compact('accounts'));
     }
 
@@ -30,50 +30,5 @@ class AccountController extends Controller
         ]);
         User::create(['name'=>$request->name, 'password'=>Hash::make($request->password), 'email'=>$request->email, 'type'=>$request->type]);
         return back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
