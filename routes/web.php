@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ShowCalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,9 @@ Route::resource('/accounts', AccountController::class)->middleware('auth');
 
 //services
 Route::resource('/services', ServiceController::class)->middleware('auth');
+
+//appointment
+Route::resource('/appointments', AppointmentController::class)->middleware('auth');
+
+//calendar
+Route::get('/calendar', ShowCalendarController::class)->middleware('auth');

@@ -17,7 +17,8 @@
             <p class="text-gray-600">Manage your services.</p>
             <div class="p-6 shadow w-full rounded mt-6" x-show.transition="showCreate">
                 <h2 class="text-lg font-bold">Add Details</h2>
-                <form action="#" class="mt-2">
+                <form action="{{ route('services.store') }}" method="POST" class="mt-2" enctype="multipart/form-data">
+                    @csrf
                     <div>
                         <label for="">Name</label>
                         <input type="text" name="name" class="input">
@@ -27,6 +28,10 @@
                         <textarea name="description" id="" class="input"></textarea>
                     </div>
                     <div class="mt-2">
+                        <label for="">Picture</label>
+                        <input type="file" name="picture" class="block">
+                    </div>
+                    <div class="mt-2">
                         <label for="">Fee</label>
                         <input type="number" name="fee" class="input">
                     </div>
@@ -34,9 +39,9 @@
                 </form>
             </div>
             <table class="w-full mt-6">
-                <tr>
+                <tr class="text-left">
                     <th>
-                        ID
+                        Picture
                     </th>
                     <th>
                         Name
@@ -50,6 +55,13 @@
                     <th>#</th>
                     <th>#</th>
                 </tr>
+                @forelse ($services as $service)
+                    @livewire('services.service-item', ['service'=>$service])
+                @empty
+                    <div class="rounded bg-yellow-100 text-black p-2">
+                        No Service Available
+                    </div>
+                @endforelse
             </table>
         </div>
     </div>

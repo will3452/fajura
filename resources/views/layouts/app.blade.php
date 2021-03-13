@@ -10,6 +10,7 @@
     @livewireStyles
 </head>
 <body>
+    @include('sweetalert::alert')
     <div x-data="{menuShow:false}">
         <nav class="flex justify-between bg-white text-gray-900 items-center px-4 shadow">
             <a href="" class="w-1/2 py-4 font-bold text-xl">
@@ -66,5 +67,6 @@
         </div>
     </div>
     @livewireScripts
+    @stack('scripts')
 </body>
 </html>
