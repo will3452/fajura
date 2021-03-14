@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth')->except('create');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +28,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('appointments.create');
     }
 
     /**

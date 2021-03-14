@@ -15,6 +15,20 @@
         <div class="w-full md:w-1/2 h-screen flex justify-center items-center">
             <div class=" w-full max-w-sm shadow p-4 ">
                 <h1 class="font-bold text-2xl uppercase text-gray-700">Login</h1>
+                @if($errors->any())
+                    <div class="flex justify-between items-start bg-red-100 text-red-900 p-2 rounded"x-data="{isClosed:false}" x-show.transition="!isClosed" >
+                        <div>
+                            @foreach($errors->all() as $error)
+                                <div>
+                                    {{$error}}
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="focus:outline-none" x-on:click="isClosed = true">
+                            &times;
+                        </button>
+                    </div>
+                @endif
                 <form action="/login" method="POST" class="uppercase">
                     @csrf
                     <div class="mt-4">

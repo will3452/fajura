@@ -36,7 +36,7 @@ Route::resource('/accounts', AccountController::class)->middleware('auth');
 Route::resource('/services', ServiceController::class)->middleware('auth');
 
 //appointment
-Route::resource('/appointments', AppointmentController::class)->middleware('auth');
+Route::resource('/appointments', AppointmentController::class);
 
 //calendar
 Route::get('/calendar', ShowCalendarController::class)->middleware('auth');
