@@ -24,7 +24,7 @@
             @endforeach
         </div>
     </div>
-    @if (request()->menu == 3 )
+    @if (request()->menu == 3 || !request()->menu)
         <div class="flex justify-end">
             <button x-on:click="isRemoved = true" wire:click="done()" class="bg-blue-100 rounded w-full md:w-auto px-4 flex justify-center items-center text-xs"><img src="/img/icons/check.svg" alt="" class="w-4 py-2"> <span class="ml-2">Mark as Done</span></button>
         </div>

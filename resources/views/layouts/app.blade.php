@@ -61,9 +61,19 @@
             </li>
             @endauth
         </ul>
-        <div>
+        {{-- <div class="w-full mx-auto h-16 bg-white px-24">
+            
+        </div> --}}
+        <div class="mb-16">
             @yield('content')
         </div>
+        @auth
+            <div class="sm:hidden w-full h-16 fixed bg-gray-100 bottom-0 flex justify-between items-center">
+                <a href="" class="mx-4">Menu</a>
+                <a href="/" class="mx-4">Home</a>
+                <a href="" class="mx-4">Back</a>
+            </div>
+        @endauth
     </div>
     @livewireScripts
     <script src="/js/app.js"></script>
