@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AppointmentController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('auth')->except('create');
+        return $this->middleware('auth')->except('create', 'store');
     }
 
     /**
@@ -18,7 +20,15 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('appointments.index');
+        $appointments = null;
+        if(request()->menu == 1) {
+            $appointments = Appointment::orderBy('datetime')->get();
+        }else if(request()->menu == 2){
+            $appointments = Appointment::where('status', 'done')->orderBy('datetime')->get();
+        }else {
+            $appointments = Appointment::where('status', '!=', 'done')->orderBy('datetime')->get();
+        }
+        return view('appointments.index', compact('appointments'));
     }
 
     /**
@@ -39,7 +49,22 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $this->validate($request, [
+            'attendee_name'=>'required',
+            'attendee_gender'=>'required',
+            'attendee_address'=>'required',
+            'services_id'=>'required',
+            'attendee_email'=>'required',
+            'attendee_mobile'=>'required',
+            'datetime'=>'required',
+        ]);
+        $services_id = explode(',', $request->services_id);
+        unset($validated['services_id']);
+        $validated['status'] = 'inlined';
+        $appointment = Appointment::create($validated);
+        $appointment->services()->attach($services_id);
+        alert()->success('Done!');
+        return redirect('/');
     }
 
     /**

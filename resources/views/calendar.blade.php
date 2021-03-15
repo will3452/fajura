@@ -17,19 +17,29 @@
             //     alert('a day has been clicked!');
             // },
             events: [
-                {
-                title: 'Meeting',
-                start: '2021-03-16T14:30:00',
-                extendedProps: {
-                    status: 'done'
-                }
-                },
-                {
-                title: 'Birthday Party',
-                start: '2021-03-15T07:00:00',
-                backgroundColor: 'green',
-                borderColor: 'green'
-                }
+                // {
+                // title: 'Meeting',
+                // start: '2021-03-16T14:30:00',
+                // extendedProps: {
+                //     status: 'done'
+                // }
+                // },
+                // {
+                // title: 'Birthday Party',
+                // start: '2021-03-15T07:00:00',
+                // backgroundColor: 'green',
+                // borderColor: 'green'
+                // }
+                @foreach ($events as $event)
+                    {
+                        title: `{{ $event->attendee_name }}`,
+                        start: `{{ $event->datetime }}`,
+                        extendsProps:{
+                            status:'done'
+                        }
+                    },
+                @endforeach
+                
             ],
             
         })

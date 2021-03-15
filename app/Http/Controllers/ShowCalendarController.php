@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class ShowCalendarController extends Controller
@@ -14,6 +15,7 @@ class ShowCalendarController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('calendar');
+        $events = Appointment::get();
+        return view('calendar', compact('events'));
     }
 }

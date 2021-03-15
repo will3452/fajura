@@ -20,10 +20,11 @@ class CreateAppointmentsTable extends Migration
             $table->string('attendee_mobile');
             $table->string('attendee_address');
             $table->string('attendee_gender');
-            $table->string('date');
-            $table->string('time');
+            $table->string('status');
+            $table->timestamp('datetime');
             $table->timestamps();
         });
+        
     }
 
     /**

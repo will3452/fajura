@@ -16,4 +16,8 @@ class Service extends Model
         $end_path = end($arr_path);
         return '/storage/picture/'.$end_path;
     }
+
+    public function appointments(){
+        return $this->belongsToMany(Appointment::class);
+    }
 }
