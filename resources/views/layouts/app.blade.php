@@ -21,16 +21,16 @@
             </button>
             <ul class="w-1/2 justify-end hidden sm:flex">
                 <li class="py-4 px-4 hover:bg-gray-100 @if(route('home') == url()->current()) active @endif" >
-                    <a href="/home">Home</a>
+                    <a href="/home"><img src="/img/icons/home.svg" alt="" class="w-6 h-6 inline-block"> Home</a>
                 </li>
                 <li class="py-4 px-4 hover:bg-gray-100 @if(route('services.index') == url()->current()) active @endif" >
-                    <a href="{{route('services.index')}}">Services</a>
+                    <a href="{{route('services.index')}}"><img src="/img/icons/healthcare.svg" alt="" class="w-6 h-6 inline-block"> Services</a>
                 </li>
                 <li class="py-4 px-4 hover:bg-gray-100 ">
-                    <a href="#">About</a>
+                    <a href="#"><img src="/img/icons/about.svg" alt="" class="w-6 h-6 inline-block"> About</a>
                 </li>
                 <li class="py-4 px-4 hover:bg-gray-100">
-                    <a href="#">Contact</a>
+                    <a href="#"><img src="/img/icons/call.svg" alt="" class="w-6 h-6 inline-block"> Contact</a>
                 </li>
                 @guest
                 <li class="py-4 px-4 hover:bg-gray-100">
@@ -41,7 +41,7 @@
                 <li class="py-4 px-4 hover:bg-gray-100">
                     <form action="/logout" method="POST">
                         @csrf
-                        <button>Logout</button>
+                        <button><img src="/img/icons/logout.svg" alt="" class="w-6 h-6 inline-block"> Logout</button>
                     </form>
                 </li>
                 @endauth
@@ -68,10 +68,10 @@
             @yield('content')
         </div>
         @auth
-            <div class="sm:hidden w-full h-16 fixed bg-gray-100 bottom-0 flex justify-between items-center">
-                <a href="" class="mx-4">Menu</a>
-                <a href="/" class="mx-4">Home</a>
-                <a href="" class="mx-4">Back</a>
+            <div class="md:hidden w-full h-16 fixed bg-gray-100 bottom-0 flex justify-between items-center">
+                <a href="/calendar" class="mx-4"><img src="/img/icons/appointment.svg" alt="" class="w-8 h-8"></a>
+                <a href="/home" class="mx-4"><img src="/img/icons/home.svg" alt="" class="w-8 h-8"></a>
+                <a href="{{ url()->previous() }}" class="mx-4"><img src="/img/icons/back-button.svg" alt="" class="w-7 h-7"></a>
             </div>
         @endauth
     </div>
